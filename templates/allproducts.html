@@ -1,0 +1,31 @@
+{% extends 'homebase.html' %}
+{% load static %}
+{% block content %}
+
+<br><br><br>
+<div class="album py-5 bg-light">
+    <div class="container text-center">
+    {% if products %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for p in products%}
+            <div class="col">
+                <div class="card shadow-sm" style="width: 300px; height: auto">
+                    <img src="{% static p.product_image.url %}" style="width:300px; height: 250px;" class="card-img-top" alt="image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.name }}</h5>
+                        <p class="card-title">{{ p.category }}</p>
+                        <p class="card-text">{{ p.price }} РУБ</p>
+                        <a href="{% url 'buy' p.id %}" class="btn btn-primary">Купить</a>
+                    </div>
+                </div>
+            </div>
+        <br>
+        {% endfor %}
+    </div>
+    {%else%}
+        <h3 style="text-align:center; color:black;">Ничего не найдено</h3>
+    {%endif%}
+    </div>
+</div>
+
+{% endblock content %}

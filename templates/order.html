@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <title>Shop</title>
+</head>
+<body>
+<style>
+</style>
+
+    {% include "navbar.html" %}
+    {% load crispy_forms_tags %}
+
+<br><br><br>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+    <form method="POST">
+            {% csrf_token %}
+            <p>
+              <label>Товар: </label><br>
+              <input type="text" name="product" value="{{ product.name }}" readonly/>
+            </p>
+            <p>
+              <label>Пользователь: </label><br>
+              <input type="text" name="user" value="{{ user.users.name }}" readonly/>
+            </p>
+            <p>
+              <label>Цена Доставки: </label><br>
+              <input type="number" name="delivery_price" value="{{ delivery_price }}" readonly/>
+            </p>
+            <p>
+              <label>Курьер: {{ courier.name }}  {{ courier.surname }}</label>
+            <p>
+              <label>Итого к оплате: </label><br>
+              <input type="number" name="order_price" value="{{ total_price }}" readonly/>
+            </p>
+            <br>
+            <input type="submit" value="Make A Order">
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

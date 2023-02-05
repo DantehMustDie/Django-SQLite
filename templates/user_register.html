@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <title>Shop</title>
+</head>
+<body>
+<style>
+</style>
+
+    {% include "navbar.html" %}
+
+<br><br><br>
+    <form method="POST" action="create/">
+        {% csrf_token %}
+        <div class="container">
+            <h2 class="text-center">User Register</h2>
+            <br><br>
+          <div class="row">
+            <div class="col">
+                <label for="inputState">Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Name">
+            </div>
+            <div class="col">
+                <label for="inputState">Surname</label>
+              <input type="text" class="form-control" name="surname" placeholder="Surname">
+            </div>
+            <div class="col">
+                <label for="inputState">Phone</label>
+              <input type="number" class="form-control" name="phone" placeholder="Phone">
+            </div>
+          </div>
+
+            <br>
+          <div class="row">
+              <div class="form-group col-md-4">
+                  <label for="inputState">Country</label>
+                  <select id="inputState" name="country" class="form-control">
+                      {% if countrys %}
+                          {% for c in countrys %}
+                            <option>{{ c.name }}</option>
+                             {% endfor %}
+                          {%else%}
+                            <option>NULL</option>
+                          {%endif%}
+                  </select>
+              </div>
+
+              <div class="form-group col-md-4">
+                  <label for="inputState">City</label>
+                  <select id="inputState" name="city" class="form-control">
+                      {% if citys %}
+                          {% for c in citys %}
+                            <option>{{ c.name }}</option>
+                             {% endfor %}
+                          {%else%}
+                            <option>NULL</option>
+                          {%endif%}
+                  </select>
+              </div>
+
+              <div class="form-group col-md-4">
+                  <label for="inputState">Street</label>
+                  <select id="inputState" name="street" class="form-control">
+                      {% if streets %}
+                          {% for s in streets %}
+                            <option>{{ s.name }}</option>
+                             {% endfor %}
+                          {%else%}
+                            <option>NULL</option>
+                          {%endif%}
+                  </select>
+              </div>
+          </div>
+            <br>
+              <div class="row">
+                <div class="col">
+                    <label for="inputState">Index</label>
+                    <input type="number" class="form-control" name="index" placeholder="Index">
+                </div>
+                <div class="col">
+                    <label for="inputState">House</label>
+                  <input type="number" class="form-control" name="house" placeholder="House">
+                </div>
+                <div class="col">
+                    <label for="inputState">Liter</label>
+                  <input type="text" class="form-control" name="liter" placeholder="Liter">
+                </div>
+                <div class="col">
+                    <label for="inputState">Apartment</label>
+                  <input type="number" class="form-control" name="apartment" placeholder="Apartment">
+                </div>
+              </div>
+            <br>
+            <input type="submit" value="Create" class="btn btn-primary">
+          </div>
+        </div>
+    </form>
+
+</body>
+</html>

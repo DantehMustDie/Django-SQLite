@@ -1,0 +1,58 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <title>Shop</title>
+</head>
+<body>
+<style>
+     TABLE {
+    width: 600px; /* Ширина таблицы */
+    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+   }
+   TD, TH {
+    padding: 3px; /* Поля вокруг содержимого таблицы */
+    border: 1px solid black; /* Параметры рамки */
+   }
+   TH {
+
+   }
+</style>
+
+    {% include "navbar.html" %}
+
+<br><br><br>
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+        {% csrf_token %}
+        <h2>Ваши заказы:</h2>
+        <table class="">
+          <tr>
+            <th>Товар:</th>
+            <th>Дата отправления:</th>
+            <th>Полная стоимость</th>
+          </tr>
+            {% for order in orders%}
+            <tr>
+                <th> {{ order.product }}</th>
+                <th> {{ order.date }}</th>
+                <th> {{ order.order_price }}</th>
+            <tr>
+            {% endfor %}
+        </table>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
